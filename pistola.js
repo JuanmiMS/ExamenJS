@@ -6,7 +6,7 @@ function pistola() {
     },
         this.scan = function () {
             console.log(this.historial)
-        }
+        },
     this.cruzarDimension = function (toTravel, fromTravel) {
 
         fromTravel.map((personaje => {
