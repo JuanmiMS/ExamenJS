@@ -6,6 +6,7 @@
 var importaRick = require('./rick');
 var importaMorty = require('./morty');
 var importaJerry = require('./jerry');
+var importaClon = require('./clon');
 
 
 /**
@@ -18,14 +19,13 @@ console.assert(protoRick);
 console.assert(protoRick.id == "C-137");
 console.assert(protoRick.ondas == "altas");
 console.assert(protoRick.habla == "Es Rick-dículo!");
-//
-// /**
-//  * Crea el objeto Morty
-//  */
+
+/**
+ * Crea el objeto Morty
+ */
 var factoriaMorty = importaMorty.singletonMorty();
 var protoMorty = factoriaMorty.get();
-//
-//
+
 console.assert(protoMorty);
 console.assert(protoMorty.id == "earthMorty");
 console.assert(protoMorty.ondas == "bajas");
@@ -34,11 +34,10 @@ console.assert(protoMorty.ondas == "bajas");
 // console.assert(protoMorty.partner == protoRick);
 console.assert(protoMorty.habla == "Oohh man!");
 //
-//
 // /**
 //  * Crea el objeto Jerry
 //  */
-
+//
 var factoriaJerry = importaJerry.singletonJerry();
 var jerry = factoriaJerry.get();
 
@@ -47,19 +46,22 @@ console.assert(jerry);
 console.assert(jerry.id = "Jerry");
 console.assert(jerry.monedas.length == 4);
 console.assert(jerry.monedas[0] == "R2-D2");
-console.assert(jerry.speak() == "Tengo una colección de monedas antiguas raras!");
+// console.assert(jerry.speak() == "Tengo una colección de monedas antiguas raras!");
 //
 // /**
 //  * Crea 2 Rick-clones y 1 clon de Morty
 //  * y asocia como partner de ese Morty a uno de los Rick-clones.
 //  */
 //
-// console.assert(clonRick);
-// console.assert(protoRick != clonRick);
+var clonRick = importaClon.clon();
+//
+//
+console.assert(clonRick);
+console.assert(protoRick != clonRick);
 // console.assert(Object.getPrototypeOf(clonRick) == protoRick);
-// console.assert(clonRick.id != "C-137");
-// console.assert(clonRick.ondas == "altas");
-// console.assert(clonRick.habla == "Es Rick-dículo!");
+console.assert(clonRick.id != "C-137");
+console.assert(clonRick.ondas == "altas");
+console.assert(clonRick.habla == "Es Rick-dículo!");
 //
 // console.assert(otroRick);
 // console.assert(protoRick != otroRick);
