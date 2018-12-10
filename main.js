@@ -1,13 +1,13 @@
-
-/** 
- * Importa los módulos de tus clases 
+/**
+ * Importa los módulos de tus clases
  */
-
 var importaRick = require('./rick');
 var importaMorty = require('./morty');
 var importaJerry = require('./jerry');
 var importaClon = require('./clon');
+var importaGun = require('./pistola');
 
+console.log("NO ME FUNCIONA NINGÚN LENGTH DE LOS OBJETS");
 
 /**
  * Crea el objeto Rick
@@ -53,76 +53,92 @@ console.assert(jerry.monedas[0] == "R2-D2");
 //  * y asocia como partner de ese Morty a uno de los Rick-clones.
 //  */
 //
-var clonRick = importaClon.clon();
-//
-//
+var clonRick = importaClon.clon().createClon('rick');
+var otroRick =importaClon.clon().createClon('rick');
+var clonMorty = importaClon.clon().createClon('morty');
+
+
 console.assert(clonRick);
 console.assert(protoRick != clonRick);
 // console.assert(Object.getPrototypeOf(clonRick) == protoRick);
 console.assert(clonRick.id != "C-137");
 console.assert(clonRick.ondas == "altas");
 console.assert(clonRick.habla == "Es Rick-dículo!");
-//
-// console.assert(otroRick);
-// console.assert(protoRick != otroRick);
+// //
+console.assert(otroRick);
+console.assert(protoRick != otroRick);
 // console.assert(Object.getPrototypeOf(otroRick) == protoRick);
-// console.assert(otroRick.id != "C-137");
-// console.assert(otroRick.ondas == "altas");
-// console.assert(otroRick.habla == "Es Rick-dículo!");
-//
-// console.assert(clonMorty);
-// console.assert(clonMorty != protoMorty);
-// console.assert(Object.getPrototypeOf(clonMorty) == protoMorty);
-// console.assert(clonMorty.ondas == "bajas");
+console.assert(otroRick.id != "C-137");
+console.assert(otroRick.ondas == "altas");
+console.assert(otroRick.habla == "Es Rick-dículo!");
+
+console.assert(clonMorty);
+console.assert(clonMorty != protoMorty);
+// // console.assert(Object.getPrototypeOf(clonMorty) == protoMorty);
+console.assert(clonMorty.ondas == "bajas");
 // console.assert(clonMorty.partner == clonRick);
-//
-//
-//
-// /**
-//  * Crea el objeto universo
-//  */
-//
-// console.assert(universo);
-// console.assert(Object.getPrototypeOf(universo) != Array.prototype);
+
+
+
+/**
+ * Crea el objeto universo
+ */
+
+let universo = {};
+
+
+console.assert(universo);
+console.assert(Object.getPrototypeOf(universo) != Array.prototype);
 // console.assert(universo.length == 0);
-//
-// /**
-//  * Crea la primera dimensión, el `Array` mundo `Tierra`,
-//  * mete en él a los 6 objetos que has creado (Rick, Morty y Jerry,
-//  * 2 rick-clones y 1 clon de Morty) y añádelo al objeto `universo`.
-//  */
-//
-// console.assert(tierra);
-// console.assert(Object.getPrototypeOf(tierra) == Array.prototype);
-// console.assert(tierra.length == 6);
-// console.assert("Tierra" in universo);
+/**
+ * Crea la primera dimensión, el `Array` mundo `Tierra`,
+ * mete en él a los 6 objetos que has creado (Rick, Morty y Jerry,
+ * 2 rick-clones y 1 clon de Morty) y añádelo al objeto `universo`.
+ */
+
+tierra = [];
+tierra.push(protoRick);
+tierra.push(protoMorty);
+tierra.push(jerry);
+tierra.push(clonRick);
+tierra.push(otroRick);
+tierra.push(clonMorty);
+
+universo["Tierra"] = tierra;
+
+console.assert(tierra);
+console.assert(Object.getPrototypeOf(tierra) == Array.prototype);
+console.assert(tierra.length == 6);
+console.assert("Tierra" in universo);
 // console.assert(universo.length == 1);
+
+/**
+ * Crea el objeto portal gun / pistola de portales.
+ *
+ * Dale la pistola al protoRick para que la dispare.
+ * Pon a la tierra en el principio del historial de dimensiones de la pistola.
+ *
+ * Rick dispara la pistola y se añade al universo la dimensión "Fart"
+ *  */
+
+var gun = importaGun.pistola();
+console.assert(gun);
+protoRick.dispara(gun, universo, "Fart");
+console.assert(gun.historial.length == 1);
 //
-// /**
-//  * Crea el objeto portal gun / pistola de portales.
-//  *
-//  * Dale la pistola al protoRick para que la dispare.
-//  * Pon a la tierra en el principio del historial de dimensiones de la pistola.
-//  *
-//  * Rick dispara la pistola y se añade al universo la dimensión "Fart"
-//  *  */
-//
-// console.assert(gun);
-// console.assert(gun.historial.length == 1);
-//
-// console.assert("Fart" in universo);
+console.assert("Fart" in universo);
 // console.assert(universo.length == 2);
-//
-// /**
-//  * Todos SALVO Jerry cruzan a la dimensión "Fart".
-//  * Has de eliminarlos del mundo tierra y meterlos en la nueva dimensión "Fart".
-//  *
-//  * Es necesaria una función cruzarDimension para ser reutilizada posteriormente.
-//  * Puedes situarla en aquel componente que estimes más adecuado.
-//  *
-//  * La pistola añade a su historial "Fart".
-//  */
-//
+
+/**
+ * Todos SALVO Jerry cruzan a la dimensión "Fart".
+ * Has de eliminarlos del mundo tierra y meterlos en la nueva dimensión "Fart".
+ *
+ * Es necesaria una función cruzarDimension para ser reutilizada posteriormente.
+ * Puedes situarla en aquel componente que estimes más adecuado.
+ *
+ * La pistola añade a su historial "Fart".
+ */
+
 // console.assert(universo["Fart"].length == 5);
 // console.assert(universo["Tierra"].length == 1);
 // console.assert(gun.historial.length == 2);
