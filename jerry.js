@@ -2,10 +2,10 @@ function jerry() {
 
     this.id = "Jerry",
     this.monedas = ["R2-D2","R2-D2","R2-D2","R2-D2"],
+    this.speak = function(){
+            return "Tengo una colección de monedas antiguas raras!"
 
-    function speak() {
-        return "Tengo una colección de monedas antiguas raras!"
-    }
+        }
 }
 
 

@@ -11,8 +11,8 @@ var importaJerry = require('./jerry');
 /**
  * Crea el objeto Rick
  */
-
-var protoRick = new importaRick.singletonRick().get();
+var factoriaRick = importaRick.singletonRick();
+var protoRick = factoriaRick.get();
 
 console.assert(protoRick);
 console.assert(protoRick.id == "C-137");
@@ -22,8 +22,8 @@ console.assert(protoRick.habla == "Es Rick-dículo!");
 // /**
 //  * Crea el objeto Morty
 //  */
-
-var protoMorty = new importaMorty.singletonMorty().get();
+var factoriaMorty = importaMorty.singletonMorty();
+var protoMorty = factoriaMorty.get();
 //
 //
 console.assert(protoMorty);
@@ -42,8 +42,8 @@ console.assert(protoMorty.habla == "Oohh man!");
 var factoriaJerry = importaJerry.singletonJerry();
 var jerry = factoriaJerry.get();
 
+
 console.assert(jerry);
-console.log("Jerry: ",jerry);
 console.assert(jerry.id = "Jerry");
 console.assert(jerry.monedas.length == 4);
 console.assert(jerry.monedas[0] == "R2-D2");
