@@ -8,6 +8,7 @@ var importaClon = require('./clon');
 var importaGun = require('./pistola');
 
 console.log("NO ME FUNCIONA NINGÚN LENGTH DE LOS OBJETOS");
+console.log("Tampoco he conseguido que se eliminen de la actualdimensión (por el asincronismo)");
 
 /**
  * Crea el objeto Rick
@@ -86,7 +87,6 @@ console.assert(clonMorty.ondas == "bajas");
 
 let universo = {};
 
-
 console.assert(universo);
 console.assert(Object.getPrototypeOf(universo) != Array.prototype);
 // console.assert(universo.length == 0);
@@ -106,11 +106,11 @@ tierra.push(clonMorty);
 
 universo["Tierra"] = tierra;
 
+
 console.assert(tierra);
 console.assert(Object.getPrototypeOf(tierra) == Array.prototype);
 console.assert(tierra.length == 6);
 console.assert("Tierra" in universo);
-// console.assert(universo.length == 1);
 
 /**
  * Crea el objeto portal gun / pistola de portales.
@@ -122,10 +122,12 @@ console.assert("Tierra" in universo);
  *  */
 
 var gun = importaGun.pistola();
+gun.addDimension("Tierra");
 console.assert(gun);
-protoRick.dispara(gun, universo, "Fart");
+
+
 console.assert(gun.historial.length == 1);
-//
+protoRick.dispara(gun, universo, "Fart");
 console.assert("Fart" in universo);
 // console.assert(universo.length == 2);
 
@@ -140,10 +142,14 @@ console.assert("Fart" in universo);
  */
 
 
+
 gun.cruzarDimension(universo["Fart"], universo["Tierra"]);
+// console.log("TIERRA: ",universo["Tierra"]);
+// console.log("FART: ", universo["Fart"]);
 
 console.assert(universo["Fart"].length == 5);
 // console.assert(universo["Tierra"].length == 1);
+
 console.assert(gun.historial.length == 2);
 
 /**
@@ -154,31 +160,34 @@ console.assert(gun.historial.length == 2);
 
 console.log(gun.scan());
 console.assert(gun.historial.length == 2);
-//
-//
-// /**
-//  * Rick dispara la pistola y se añade al universo la dimensión "Coaches".
-//  */
-//
-// console.assert("Coach" in universo);
-// console.assert(universo.length == 3);
-//
-// /**
-//  * Los cuatro cruzan a la dimensión "Coach".
-//  *
-//  * Has de eliminarlos del mundo "Fart" y meterlos en la nueva dimensión "Coach".
-//  *
-//  * La pistola añade a su historial "Fart".
-//  *
-//  * Si haces un scan de la pistola, se muestra en consola
-//  * Coaches, Fart, Tierra.
-//  */
-//
-// console.assert(universo["Coaches"].length == 5);
-// console.assert(universo["Fart"].length == 0);
+
+
+/**
+ * Rick dispara la pistola y se añade al universo la dimensión "Coaches".
+ */
+protoRick.dispara(gun, universo, "Coach");
+
+console.assert("Coach" in universo);
+console.assert(universo.length == 3);
+
+/**
+ * Los cuatro cruzan a la dimensión "Coach".
+ *
+ * Has de eliminarlos del mundo "Fart" y meterlos en la nueva dimensión "Coach".
+ *
+ * La pistola añade a su historial "Fart".
+ *
+ * Si haces un scan de la pistola, se muestra en consola
+ * Coaches, Fart, Tierra.
+ */
+
+gun.cruzarDimension(universo["Coach"], universo["Fart"]);
+console.assert(universo["Coach"].length == 5);
+
+console.assert(universo["Fart"].length == 0);
 // console.assert(universo["Tierra"].length == 1);
-// console.log(gun.scan());
-// console.assert(gun.historial.length == 3);
+console.log(gun.scan());
+console.assert(gun.historial.length == 3);
 //
 //
 //

@@ -10,13 +10,15 @@ function pistola() {
     this.cruzarDimension = function (toTravel, fromTravel) {
 
         fromTravel.map((personaje => {
+
             if (personaje.id !== "Jerry") {
                 toTravel.push(personaje);
-                fromTravel.shift()
+                var index = toTravel.indexOf(personaje);
+                // console.log("index: ", index, ", personaje: ", personaje.id);
+                // if (index !== -1) fromTravel.splice(index, 1);
             }
-        }));
 
-        this.addDimension(toTravel);
+        }));
         
     }
 }
