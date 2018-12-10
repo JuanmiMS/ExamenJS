@@ -6,7 +6,7 @@ function rick() {
     this.habla = "Es Rick-dículo!"
     this.dispara = function (gun, uni, dim) {
         gun.addDimension(dim);
-        uni[dim] = dim;
+        uni[dim] = [];
     }
 
 }

@@ -7,7 +7,7 @@ var importaJerry = require('./jerry');
 var importaClon = require('./clon');
 var importaGun = require('./pistola');
 
-console.log("NO ME FUNCIONA NINGÚN LENGTH DE LOS OBJETS");
+console.log("NO ME FUNCIONA NINGÚN LENGTH DE LOS OBJETOS");
 
 /**
  * Crea el objeto Rick
@@ -139,18 +139,21 @@ console.assert("Fart" in universo);
  * La pistola añade a su historial "Fart".
  */
 
-// console.assert(universo["Fart"].length == 5);
+
+gun.cruzarDimension(universo["Fart"], universo["Tierra"]);
+
+console.assert(universo["Fart"].length == 5);
 // console.assert(universo["Tierra"].length == 1);
-// console.assert(gun.historial.length == 2);
-//
-// /**
-//  * Si haces un scan de la pistola, se muestra en consola
-//  * la lista de dimensiones, desde la más reciente a la más
-//  * antigua: Fart, Tierra.
-//  */
-//
-// console.log(gun.scan());
-// console.assert(gun.historial.length == 2);
+console.assert(gun.historial.length == 2);
+
+/**
+ * Si haces un scan de la pistola, se muestra en consola
+ * la lista de dimensiones, desde la más reciente a la más
+ * antigua: Fart, Tierra.
+ */
+
+console.log(gun.scan());
+console.assert(gun.historial.length == 2);
 //
 //
 // /**
