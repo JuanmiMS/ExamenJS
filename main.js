@@ -3,7 +3,7 @@
  * Importa los módulos de tus clases 
  */
 
-var importaRick = require('./Rick');
+var importaRick = require('./rick');
 
 
 /**
@@ -12,7 +12,6 @@ var importaRick = require('./Rick');
 
 var protoRick = new importaRick.singletonRick("C-137","altas", "Es Rick-dículo!").get();
 
-console.log(protoRick);
 console.assert(protoRick);
 console.assert(protoRick.id == "C-137");
 console.assert(protoRick.ondas == "altas");
