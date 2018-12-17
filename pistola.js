@@ -18,8 +18,7 @@ function pistola() {
             If(pasa(métodoRaúl()){
                 toTravel.push(personaje);
                 var index = toTravel.indexOf(personaje);
-                // console.log("index: ", index, ", personaje: ", personaje.id);
-                 if (index !== -1) fromTravel.splice(index, 1);
+                if (index !== -1) fromTravel.splice(index, 1);
             }
 
         }));
