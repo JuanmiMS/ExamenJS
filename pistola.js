@@ -11,13 +11,9 @@ function pistola() {
 
         fromTravel.map((personaje => {
 
-            //No uséis esto, es una mala práctica
-            //if (personaje.id !== "Jerry") {
-            
-            //Usad esto, va mejor
-            If(pasa(métodoRaúl()){
+            if (personaje.id !== "Jerry") {
                 toTravel.push(personaje);
-                var index = toTravel.indexOf(personaje);
+                var index = fromTravel.indexOf(personaje);
                 if (index !== -1) fromTravel.splice(index, 1);
             }
 
